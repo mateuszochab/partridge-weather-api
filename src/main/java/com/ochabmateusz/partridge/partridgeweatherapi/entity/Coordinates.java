@@ -18,5 +18,12 @@ public class Coordinates {
     private float lat;
 
 
+    //version for list request because there is a "typo" in providers api
+    @JsonProperty("Lon")
+    private float lonforlist;
+    @JsonProperty("Lat")
+    private float latforlist;
+
+
 
 }
