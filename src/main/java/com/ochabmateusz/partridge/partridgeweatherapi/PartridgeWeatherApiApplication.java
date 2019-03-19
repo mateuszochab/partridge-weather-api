@@ -25,3 +25,4 @@ public class PartridgeWeatherApiApplication {
 //TODO add unit and integration tests
 //TODO add caching management
 //TODO add controller and service for historical information (probably new microservice for that)
+//TODO BUG-doesnt clear cache

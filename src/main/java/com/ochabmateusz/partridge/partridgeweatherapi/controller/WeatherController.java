@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.MalformedURLException;
@@ -36,10 +37,12 @@ public class WeatherController {
         return this.weatherService.getCityByName(cityName);
     }
 
-    @GetMapping("/getByCityCoordinates/{lat}/{lon}")
-    public CityWeather GetCityByCoordinates(@PathVariable("lat") float lat, @PathVariable("lon") float lon){
+    @GetMapping("/getByCityCoordinates")
+    public CityWeather GetCityByCoordinates(@RequestParam String[] coordinates){
 
-        return this.weatherService.getCityByCoordinates(lat,lon);
+
+
+        return this.weatherService.getCityByCoordinates(coordinates);
 
     }
 
@@ -53,24 +56,20 @@ public class WeatherController {
 
     }
 
-    @GetMapping("getCitiesInRectArea/{lonLeft}/{latBottom}/{lonRight}/{latTop}/{zoom}")
-    public List<CityWeather> GetCitiesInRectangleArea(@PathVariable("lonLeft") float lonLeft,
-                                                      @PathVariable("latBottom") float latBottom,
-                                                      @PathVariable("lonRight") float lonRight,
-                                                      @PathVariable("latTop") float latTop,
-                                                      @PathVariable("zoom") int zoom){
+    @GetMapping("getCitiesInRectArea")
+    public List<CityWeather> GetCitiesInRectangleArea(@RequestParam("coordinates") List<String> coordinates){
 
-        return this.weatherService.getCitiesInRectArea(lonLeft,latBottom,lonRight,latTop,zoom);
+        return this.weatherService.getCitiesInRectArea(coordinates);
     }
 
 
 
 
-//
-//
-//    public List<CityWeather> GetCitiesInCircleArea(){
-//
-//
-//
-//    }
+
+
+    @GetMapping("getCitiesInCircleArea")
+    public List<CityWeather> GetCitiesInCircleArea(@RequestParam("coordinates") List<String> coordinates){
+
+        return this.weatherService.getNumberOfCitiesInCircle(coordinates);
+    }
 }

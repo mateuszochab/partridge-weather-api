@@ -12,10 +12,12 @@ public interface WeatherService {
     CityWeather getCityByName(String url);
 
 
-    CityWeather getCityByCoordinates(float lat, float lon);
+    CityWeather getCityByCoordinates(String... coordinates);
 
 
     CityWeather getCityByZipCode(String zipCode, String countryCode);
 
-    List<CityWeather> getCitiesInRectArea(float lonLeft, float latBottom, float lonRight, float latTop, int zoom);
+    List<CityWeather> getCitiesInRectArea(List<String> coordinates);
+
+    List<CityWeather> getNumberOfCitiesInCircle(List<String> coordinates);
 }
