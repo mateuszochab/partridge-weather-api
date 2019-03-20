@@ -9,7 +9,7 @@ public class Weather {
 
     private int id;
     private String main;
-    private String desctiption;
+    private String description;
     private String icon;
 
 
